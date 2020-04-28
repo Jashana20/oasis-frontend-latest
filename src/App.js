@@ -8,22 +8,21 @@ import SignUp from './components/SignUp'
 import API from './components/API'
 import LoggedInMainPage from './components/LoggedInMainPage';
 
+
 class App extends React.Component{
 
   state = {
     accountHandling: false,
     user: null,
     moods: [],
-    userId: null
   }
 
-  // componentDidMount(){
-  //   if(localStorage.token){
-  //     API.get("validate", localStorage.token)
-  //     .then(json => this.signIn(json.user, json.mood, json.token))
-  //   }
-  //   else console.log("Sorry wrong username or password")
-  // }
+  componentDidMount(){
+    if(localStorage.token){
+      API.get("validate", localStorage.token)
+      .then(json => this.signIn(json.user, json.mood, json.token))
+    }
+  }
 
   // validateSignIn = () => {
 
@@ -58,6 +57,7 @@ class App extends React.Component{
     API.post()
   }
 
+
   render() {
     const componentToDisplay = this.state.user === null ? 
     <AuthContainer submit={this.onLoggedInSubmit}/>
@@ -66,7 +66,6 @@ class App extends React.Component{
       moods={this.state.moods}
       signOut={this.signOut}
       userEntries={this.state.userEntries}
-      userId={this.state.userId}
     /> 
     
     return componentToDisplay

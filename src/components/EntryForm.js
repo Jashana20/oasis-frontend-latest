@@ -5,33 +5,10 @@ import API from './API'
 
 class EntryForm extends React.Component{
 
-    // user_id: this.props.user.id, 
-
-    // handleSubmitEntry = (e) => {
-    //     e.preventDefault()
-    //     const entry = {
-    //         entry: {journal_entry: this.props.entry, mood_id: this.props.selectedMood}
-    //     }
-    //     API.post("entries", entry)
-    //     .then(entry => this.props.addJournalEntry(entry))
-    //     .then(data => console.log(data))
-    // } 
-
-    // "journal_entry": "asdfghjkl yup",
-    // "mood_id": 9,
-    // "mood": {
-    //   "id": 9,
-    //   "name": "Ominous"
-    // }
-
-    moodPostFilter = this.props.moods.filter(mood => mood.name == this.props.selectedMood)
-    moodName = this.moodPostFilter.filter(mood => mood.name)
-
-
     handleSubmitEntry = (e) => {
         e.preventDefault()
              const entry = {
-            entry: {journal_entry: this.props.entry, user_id: this.props.userId, mood_id: this.props.selectedMood}
+            entry: {journal_entry: this.props.entry, user_id: this.props.user.id, mood_id: this.props.selectedMood}
         }
         fetch("http://localhost:3000/entries", {
             method: "POST",
@@ -65,11 +42,11 @@ class EntryForm extends React.Component{
                     </div>
                     )}
                     <button>Save</button>
-                    <PromptContainer /> 
                 </form>        
                 <form onSubmit={(event) => this.props.handleUpdateSubmit(event)}>
                 <button>Update</button> 
                 </form> 
+                <PromptContainer prompts={this.props.prompts}/> 
             </div>
         )
     }

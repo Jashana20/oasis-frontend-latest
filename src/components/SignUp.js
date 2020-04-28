@@ -25,7 +25,7 @@ class SignUp extends React.Component {
                 user: {
                     username: this.state.username,
                     email: this.state.email,
-                    password_digest: this.state.password,
+                    password: this.state.password,
                 }
             })
         })

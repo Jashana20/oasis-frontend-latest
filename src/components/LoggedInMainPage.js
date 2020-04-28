@@ -5,6 +5,8 @@ import MoodChart from './containers/MoodChartContainer'
 import NavBar from './NavBar'
 import API from './API'
 
+const BASE_URL = "http://localhost:3000"
+
 class LoggedInMainPage extends React.Component{
 
     state = {
@@ -12,11 +14,20 @@ class LoggedInMainPage extends React.Component{
         showAllEntries: false,
         showMoodCharts: false,
         entry: "",
-        selectedMood: "",
+        selectedMoodId: "",
+        selectedMoodObj: {},
         selectedEntry: {},
-        userEntries: []
+        userEntries: [],
+        prompts: []
         // selectedEntryId: 0,
     }
+
+
+    componentDidMount(){
+    fetch(BASE_URL + '/questions')
+    .then(res => res.json())
+    .then(q => this.setState({prompts: q}))
+  }
 
     // selectedEntry = () => {
     //     return this.state.userEntries.find( e => e.id == this.state.selectedEntryId )
@@ -53,7 +64,10 @@ class LoggedInMainPage extends React.Component{
     }
 
     handleSelectedMood = (e) => {
-        this.setState({selectedMood: e.target.value})
+        const moodObj = this.props.moods.filter(mood => mood.id == e.target.value)
+        this.setState({
+            selectedMoodId: e.target.value,
+            selectedMoodObj: moodObj})
     }
 
     handleShowMoodCharts = () => {
@@ -67,6 +81,8 @@ class LoggedInMainPage extends React.Component{
             selectedEntry: selectedEntry
         })
     }
+
+    // .mood_id
 
     handleUpdateSubmit = (event) => {
         event.preventDefault()
@@ -122,15 +138,18 @@ class LoggedInMainPage extends React.Component{
                         deleteEntry={this.deleteEntry}
                         moods={this.props.moods}
                         handleSelectedMood={this.handleSelectedMood}
-                        selectedMood={this.state.selectedMood}
+                        selectedMood={this.state.selectedMoodId}
                          />
                     </div>
                     )}
-                     {this.state.showMoodCharts && (<MoodChart />) }
-                {this.state.showEntryForm ? (
+                     {this.state.showMoodCharts && (<MoodChart user={this.props.user} moods={this.props.moods} />) }
+                     <button onClick={this.handleShowEntryForm}>
+                    {this.state.showEntryForm ? "Maybe later" : "Start writing"}
+                    </button> 
+                {this.state.showEntryForm && (
                     <div>
                     <EntryForm 
-                    selectedMood={this.state.selectedMood}
+                    selectedMood={this.state.selectedMoodId}
                     handleSelectedMood={this.handleSelectedMood}
                     moods={this.props.moods}
                     user={this.props.user}
@@ -140,10 +159,11 @@ class LoggedInMainPage extends React.Component{
                     addJournalEntry={this.addJournalEntry}
                     handleUpdateSubmit={this.handleUpdateSubmit}
                     userId={this.props.userId}
+                    prompts={this.state.prompts}
+                    selectedMoodObj={this.state.selectedMoodObj}
                     />
                     </div>
-             ) : 
-                <button onClick={this.handleShowEntryForm}>Write a new entry</button> }
+             )} 
             </div>
         )
     }

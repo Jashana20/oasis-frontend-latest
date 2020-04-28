@@ -4,19 +4,44 @@ import PromptCard from '../presentational/PromptCard'
 class PromptContainer extends React.Component{
 
     state = {
-        lifeSatisfaction: "",
-        worthwhile: "",
-        happiness: "",
-        anxiety: ""
+     lifeSatisfaction: "",
+     worthwhile: "",
+     happiness: "",
+     anxiety: ""
+    }
+
+    handlePromptInput = (e) => {
+        this.setState({[e.target.name]:e.target.value})
     }
 
     render(){
         return(
             <div>
-                <h1>Prompts:</h1> 
+                <h1>Optional prompts:</h1> 
                 <p>These questions are from the Office for National Statistics 
-                    and are used to measure personal well-being</p>
-                    {this.props.prompts.map(prompt => <PromptCard key={prompt.id} prompt={prompt}/>)}
+                    and are used to measure personal well-being.</p>
+                    <form>
+                    {this.props.prompts.map(prompt => <PromptCard key={prompt.id} prompt={prompt} />)}
+                    <textarea rows="4" cols="50" type="text" name="lifeSatisfaction" 
+                    value={this.state.lifeSatisfaction}
+                    onChange={this.handlePromptInput}
+                    placeholder={this.props.prompts[0].question} />
+                    <br />
+                    <textarea rows="4" cols="50" type="text" name="worthwhile"
+                    value={this.state.worthwhile} 
+                    onChange={this.handlePromptInput} 
+                    placeholder={this.props.prompts[1].question}/>
+                    <br />
+                    <textarea rows="4" cols="50" type="text" name="happiness" 
+                    value={this.state.happiness} 
+                    onChange={this.handlePromptInput} 
+                    placeholder={this.props.prompts[2].question}/>
+                    <br />
+                    <textarea rows="4" cols="50" type="text" name="anxiety" 
+                    value={this.state.anxiety} 
+                    onChange={this.handlePromptInput} 
+                    placeholder={this.props.prompts[3].question}/>
+                    </form>
             </div>
         )
     }

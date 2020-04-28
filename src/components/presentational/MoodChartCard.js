@@ -7,16 +7,15 @@ class MoodChartCard extends React.Component{
   moodData = this.props.user.entries.map(entry => entry.mood_id)
   entryData = this.props.user.entries.map(entry => entry.id)
   
-
     state = {
-      chartData: {
+        chartData: {
         labels: this.entryData,
         datasets: [{
-          label: "Your Mood",
-          data: this.moodData,
-          backgroundColor: 'rgba(255, 99, 132, 0.6)'
-        }]
-      }
+            label: "Your Mood",
+            data: this.moodData,
+            backgroundColor: 'rgba(255, 99, 132, 0.6)'
+          }]
+        }
     }
     
       render() {
@@ -42,3 +41,5 @@ class MoodChartCard extends React.Component{
 
 
 export default MoodChartCard
+
+

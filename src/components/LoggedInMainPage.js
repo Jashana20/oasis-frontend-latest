@@ -111,17 +111,19 @@ class LoggedInMainPage extends React.Component{
           body: JSON.stringify(entryUpdate)
         })
         .then(res => res.json())
-        .then(this.fetchEntries)
+        // .then(this.setState({userEntries: this.props.user.entries}))
       }
 
       selectEntryToDelete = (entryToDelete) => {
           this.setState({selectedEntry: entryToDelete})
       }
 
-      deleteEntry = () => {
+      deleteEntry = (e) => {
+          e.preventDefault()
          fetch(`http://localhost:3000/entries/${this.state.selectedEntry.id}`, {
             method: 'DELETE',
       })
+    //   .then(res => res.json())
     }
   
     render(){

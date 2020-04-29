@@ -1,5 +1,5 @@
 import React from 'react';
-import {Bar, Line, Graph} from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 
 
 class MoodChartCard extends React.Component{

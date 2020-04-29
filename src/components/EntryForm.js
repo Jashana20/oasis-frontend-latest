@@ -1,6 +1,6 @@
 import React from 'react'
 import PromptContainer from './containers/PromptContainer'
-import API from './API'
+// import API from './API'
 
 
 class EntryForm extends React.Component{

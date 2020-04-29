@@ -3,7 +3,8 @@ import EntryForm from './EntryForm'
 import EntryContainer from './containers/EntryContainer'
 import MoodChart from './containers/MoodChartContainer'
 import NavBar from './NavBar'
-import API from './API'
+import Affirmations from '../affirmation'
+// import API from './API'
 
 const BASE_URL = "http://localhost:3000"
 
@@ -14,6 +15,7 @@ class LoggedInMainPage extends React.Component{
         showAllEntries: false,
         showMoodCharts: false,
         entry: "",
+        affirmation: "",
         selectedMoodId: "",
         selectedMoodObj: {},
         selectedEntry: {},
@@ -27,7 +29,18 @@ class LoggedInMainPage extends React.Component{
     fetch(BASE_URL + '/questions')
     .then(res => res.json())
     .then(q => this.setState({prompts: q}))
+    .then(this.randomAffirmation)
   }
+
+   randomAffirmation = () => {
+    const random = Affirmations[Math.floor(Math.random()*Affirmations.length)];
+    // return random
+    this.setState({affirmation: random})
+   } 
+
+//    handleAffirmation = () => {
+//        this.setState({affirmation: !this.state.affirmation})
+//    }
 
     // selectedEntry = () => {
     //     return this.state.userEntries.find( e => e.id == this.state.selectedEntryId )
@@ -112,7 +125,7 @@ class LoggedInMainPage extends React.Component{
     }
   
     render(){
-        return(
+       return(
             // <Router>
             //     <Switch>
             //         <Route />
@@ -128,6 +141,7 @@ class LoggedInMainPage extends React.Component{
                     handleShowAllEntries={this.handleShowAllEntries}
                     handleShowMoodCharts={this.handleShowMoodCharts} />
                     {this.props.user && <h1>{this.props.user.username}, lets get journalling!</h1>}
+                  <h3>{this.state.affirmation}</h3> 
                 {this.state.showAllEntries && (
                     <div>
                         <EntryContainer 

@@ -1,6 +1,4 @@
 import React from 'react'
-import LoggedInMainPage from './LoggedInMainPage'
-import API from './API'
 
 class Account extends React.Component{
 

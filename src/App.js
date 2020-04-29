@@ -1,9 +1,6 @@
 import React from 'react';
 import './App.css';
-import MainPage from './components/MainPage';
 import AuthContainer from './components/containers/AuthContainer'
-import LogIn from './components/LogIn'
-import SignUp from './components/SignUp'
 // import { Route, withRouter } from "react-router-dom";
 import API from './components/API'
 import LoggedInMainPage from './components/LoggedInMainPage';

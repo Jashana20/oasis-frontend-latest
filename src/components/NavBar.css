@@ -26,3 +26,21 @@ li a:hover {
 .logo {
     float:left
 }
+
+.font {
+  font-family: "TeX Gyre Adventor Bold Italic", Arial; 
+  font-weight: normal;
+  font-style: normal;
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}

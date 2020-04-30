@@ -1,4 +1,5 @@
 import React from 'react'
+import '../App.css';
 
 class SignUp extends React.Component {
 
@@ -36,8 +37,8 @@ class SignUp extends React.Component {
     render(){
         return(
             <>
-                <h3>Sign Up:</h3>
-                <form onSubmit={this.createNewUser}>
+                <h3 className="center">Sign Up:</h3>
+                <form className="center" onSubmit={this.createNewUser}>
                     <input 
                     placeholder="Username" 
                     name="username" required
@@ -53,7 +54,8 @@ class SignUp extends React.Component {
                     name="password" required
                     onChange={this.handleSignUpInput}></input>
                     <br />
-                    <input type="submit" value="submit"></input>
+                    <br />
+                    <button type="submit" className="ui teal basic button">Sign Up</button>
                 </form>
             </>
         )

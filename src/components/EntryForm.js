@@ -1,6 +1,8 @@
 import React from 'react'
 import PromptContainer from './containers/PromptContainer'
 // import API from './API'
+import './NavBar.css'
+import '../App.css';
 
 
 class EntryForm extends React.Component{
@@ -28,7 +30,7 @@ class EntryForm extends React.Component{
         return(
             <div>
                 <h1>Whats up in the air today?</h1>
-                <form onSubmit={this.handleSubmitEntry}>
+                <form onSubmit={this.handleSubmitEntry} >
                     <textarea type="text" placeholder="Tell us..." 
                     name="entry" 
                     value={this.props.entry}
@@ -38,7 +40,7 @@ class EntryForm extends React.Component{
                     {this.props.moods.map((mood, i) => 
                     <div key={i}> 
                         <input type="radio" name="mood" value={mood.id} onClick={this.props.handleSelectedMood} /> 
-                        <label htmlFor="mood">{mood.name}</label>
+                        <label className="font" htmlFor="mood">{mood.name}</label>
                     </div>
                     )}
                     <button>Save</button>

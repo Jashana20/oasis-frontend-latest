@@ -1,16 +1,33 @@
 import React from 'react'
+import '../NavBar'
 
-class EntryCard extends React.Component{
-    render(){
+class EntryCard extends React.Component{ 
+
+    entryMood = () => {
+        const mood = this.props.moods.filter(mood => mood.id === this.props.entry.mood_id)
+         const entryMood = mood.map(mood => mood.name)
+        return entryMood
+    } 
+
+    render(){  
         return(
-            <div>
-                {this.props.entry.journal_entry}
+            <div className="ui card">
+                <p>{this.props.entry.journal_entry}</p>
+                <h4>
+                <i class="frown outline icon"></i>
+                <i class="meh outline icon"></i>
+                <i class="smile outline icon"></i>
+                     {this.entryMood()}</h4>
                 <br />
-                <button onClick={() => this.props.populateEntryForm(this.props.entry)}>Edit</button>
+                <div className="ui two buttons">
+                <button className="ui teal basic button" onClick={() => this.props.populateEntryForm(this.props.entry)}>
+                <i class="pencil alternate icon"></i>Edit</button>
                 <br />
                 <form onSubmit={this.props.deleteEntry}> 
-                <button onClick={() => this.props.selectEntryToDelete(this.props.entry)}>Delete</button>
+                <button className="ui teal basic button" onClick={() => this.props.selectEntryToDelete(this.props.entry)}>
+                <i class="trash alternate icon"></i>Delete</button>
                 </form>
+                </div>
             </div>
         )
     }

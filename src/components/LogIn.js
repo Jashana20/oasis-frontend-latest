@@ -1,4 +1,5 @@
 import React from 'react'
+import '../App.css';
 
 class Account extends React.Component{
 
@@ -18,8 +19,8 @@ class Account extends React.Component{
     render(){
         return(
             <>
-                <h3>Log In:</h3>
-                <form onSubmit={(e) => this.props.submit(e, this.state)}>
+                <h3 className="center">Log In:</h3>
+                <form className="center" onSubmit={(e) => this.props.submit(e, this.state)}>
                     <input
                         type="text"
                         name="username"
@@ -36,7 +37,9 @@ class Account extends React.Component{
                         required
                     ></input>
                     <br />
-                    <input type="submit" value="Submit" />
+                    <br />
+                    {/* <input type="submit" value="Submit" /> */}
+                    <button type="submit" className="ui teal basic button">Log In</button>
                 </form>                 
             </>
         )

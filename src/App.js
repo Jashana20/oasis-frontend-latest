@@ -4,7 +4,7 @@ import AuthContainer from './components/containers/AuthContainer'
 // import { Route, withRouter } from "react-router-dom";
 import API from './components/API'
 import LoggedInMainPage from './components/LoggedInMainPage';
-
+import 'semantic-ui-css/semantic.min.css'
 
 class App extends React.Component{
 

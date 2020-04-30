@@ -13,7 +13,8 @@ class MoodChartCard extends React.Component{
         datasets: [{
             label: "Your Mood",
             data: this.moodData,
-            backgroundColor: 'rgba(255, 99, 132, 0.6)'
+            backgroundColor: 'rgba(173,216,230)'
+            //  'rgba(255, 99, 132, 0.6)'
           }]
         }
     }

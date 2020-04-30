@@ -4,6 +4,7 @@ import EntryContainer from './containers/EntryContainer'
 import MoodChart from './containers/MoodChartContainer'
 import NavBar from './NavBar'
 import Affirmations from '../affirmation'
+import '../App.css';
 // import API from './API'
 
 const BASE_URL = "http://localhost:3000"
@@ -143,7 +144,8 @@ class LoggedInMainPage extends React.Component{
                     handleShowAllEntries={this.handleShowAllEntries}
                     handleShowMoodCharts={this.handleShowMoodCharts} />
                     {this.props.user && <h1>{this.props.user.username}, lets get journalling!</h1>}
-                  <h3>{this.state.affirmation}</h3> 
+                <div className="center">
+                <h3>{this.state.affirmation}</h3> 
                 {this.state.showAllEntries && (
                     <div>
                         <EntryContainer 
@@ -159,7 +161,7 @@ class LoggedInMainPage extends React.Component{
                     </div>
                     )}
                      {this.state.showMoodCharts && (<MoodChart user={this.props.user} moods={this.props.moods} />) }
-                     <button onClick={this.handleShowEntryForm}>
+                     <button className="ui teal basic button" onClick={this.handleShowEntryForm}>
                     {this.state.showEntryForm ? "Maybe later" : "Start writing"}
                     </button> 
                 {this.state.showEntryForm && (
@@ -180,6 +182,7 @@ class LoggedInMainPage extends React.Component{
                     />
                     </div>
              )} 
+                </div>
             </div>
         )
     }

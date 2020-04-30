@@ -43,10 +43,10 @@ class EntryForm extends React.Component{
                         <label className="font" htmlFor="mood">{mood.name}</label>
                     </div>
                     )}
-                    <button>Save</button>
+                    <button className="ui teal basic button">Save</button>
                 </form>        
                 <form onSubmit={(event) => this.props.handleUpdateSubmit(event)}>
-                <button>Update</button> 
+                <button className="ui teal basic button">Update</button> 
                 </form> 
                 <PromptContainer prompts={this.props.prompts}/> 
             </div>

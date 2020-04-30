@@ -38,23 +38,9 @@ class LoggedInMainPage extends React.Component{
     // return random
     this.setState({affirmation: random})
    } 
-
-//    handleAffirmation = () => {
-//        this.setState({affirmation: !this.state.affirmation})
-//    }
-
+   
     // selectedEntry = () => {
     //     return this.state.userEntries.find( e => e.id == this.state.selectedEntryId )
-    // }
-
-    // componentDidMount(){
-    //     if(!localStorage.token){
-    //         this.props.history.push("/MainPage")
-    //     } 
-    // }
-
-    // componentDidMount(){
-    //     this.setState({userEntries: this.props.user.entries})
     // }
 
     addJournalEntry = (entry) => { 

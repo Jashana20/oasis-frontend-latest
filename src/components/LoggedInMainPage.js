@@ -147,6 +147,7 @@ class LoggedInMainPage extends React.Component{
                     </div>
                     )}
                      {this.state.showMoodCharts && (<MoodChart user={this.props.user} moods={this.props.moods} />) }
+                     <br />
                      <button className="ui teal basic button" onClick={this.handleShowEntryForm}>
                     {this.state.showEntryForm ? "Maybe later" : "Start writing"}
                     </button> 

@@ -61,14 +61,14 @@ class App extends React.Component{
 
 
   render() {
-    const componentToDisplay = this.state.user === null ? 
-    <AuthContainer submit={this.onLoggedInSubmit}/>
-    : <LoggedInMainPage 
+    const componentToDisplay = this.state.user ? 
+    <LoggedInMainPage 
       user={this.state.user}
       moods={this.state.moods}
       signOut={this.signOut}
       userEntries={this.state.userEntries}
-    /> 
+    /> :
+    <AuthContainer submit={this.onLoggedInSubmit}/>
     
     return componentToDisplay
   }

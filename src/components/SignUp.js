@@ -36,28 +36,32 @@ class SignUp extends React.Component {
 
     render(){
         return(
-            <>
-                <h3 className="center">Sign Up:</h3>
-                <form className="center" onSubmit={this.createNewUser}>
+            <div className="center">
+                <br />
+                <h3>Sign Up:</h3>
+                <form className="ui small form" onSubmit={this.createNewUser}>
                     <input 
                     placeholder="Username" 
                     name="username" required
-                    onChange={this.handleSignUpInput}></input>
+                    onChange={this.handleSignUpInput}
+                    className="three wide field"></input>
                     <br />
                     <input 
                     placeholder="Email" 
                     name="email" required
-                    onChange={this.handleSignUpInput}></input>
+                    onChange={this.handleSignUpInput}
+                    className="three wide field"></input>
                     <br />
                     <input 
                     placeholder="Password" 
                     name="password" required
-                    onChange={this.handleSignUpInput}></input>
+                    onChange={this.handleSignUpInput}
+                    className="three wide field"></input>
                     <br />
                     <br />
                     <button type="submit" className="ui teal basic button">Sign Up</button>
                 </form>
-            </>
+            </div>
         )
     }
 }

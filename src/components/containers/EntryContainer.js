@@ -17,7 +17,8 @@ console.log(filteredMoodEntries)
                     <option className="ui simple dropdown item" key={i} name="mood" value={mood.id}>{mood.name}</option>)}
                 </select>
                 <br />
-                <div>
+                <br />
+                <div className="row">
                 {this.props.selectedMood === "" ? 
                 this.props.entries.map(entry => 
                 <EntryCard 

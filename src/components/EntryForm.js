@@ -31,7 +31,7 @@ class EntryForm extends React.Component{
             <div>
                 <h1>Whats up in the air today?</h1>
                 <form onSubmit={this.handleSubmitEntry} >
-                    <textarea type="text" placeholder="Tell us..." 
+                    <textarea className="ui massive form" type="text" placeholder="Tell us..." 
                     name="entry" 
                     value={this.props.entry}
                     onChange={this.props.handleEntryForm}/>
@@ -43,6 +43,7 @@ class EntryForm extends React.Component{
                         <label className="font" htmlFor="mood">{mood.name}</label>
                     </div>
                     )}
+                    <br />
                     <button className="ui teal basic button">Save</button>
                 </form>        
                 <form onSubmit={(event) => this.props.handleUpdateSubmit(event)}>

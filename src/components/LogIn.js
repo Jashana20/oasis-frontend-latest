@@ -18,15 +18,17 @@ class Account extends React.Component{
 
     render(){
         return(
-            <>
-                <h3 className="center">Log In:</h3>
-                <form className="center" onSubmit={(e) => this.props.submit(e, this.state)}>
+            <div className="center">
+                <br />
+                <h3>Log In:</h3>
+                <form className="ui small form" onSubmit={(e) => this.props.submit(e, this.state)}>
                     <input
                         type="text"
                         name="username"
                         onChange={this.addExistingUserToState}
                         placeholder="Username"
                         required
+                        className="three wide field"
                     ></input>
                     <br />
                     <input
@@ -35,13 +37,14 @@ class Account extends React.Component{
                         onChange={this.addExistingUserToState}
                         placeholder="Password"
                         required
+                        className="three wide field"
                     ></input>
                     <br />
                     <br />
                     {/* <input type="submit" value="Submit" /> */}
                     <button type="submit" className="ui teal basic button">Log In</button>
                 </form>                 
-            </>
+            </div>
         )
     }
 }

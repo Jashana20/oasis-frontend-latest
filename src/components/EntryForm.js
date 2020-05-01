@@ -7,6 +7,14 @@ import '../App.css';
 
 class EntryForm extends React.Component{
 
+    state = {
+        showPrompts: false
+    }
+
+    handleShowPrompts = () => {
+        this.setState({showPrompts: !this.state.showPrompts})
+    }
+
     handleSubmitEntry = (e) => {
         e.preventDefault()
              const entry = {
@@ -28,28 +36,32 @@ class EntryForm extends React.Component{
 
     render(){
         return(
-            <div>
+            <div className="ui horizontal segments">
+                <div className="ui left aligned segment">
                 <h1>Whats up in the air today?</h1>
-                <form onSubmit={this.handleSubmitEntry} >
+                <form onSubmit={this.handleSubmitEntry}>
                     <textarea className="ui massive form" type="text" placeholder="Tell us..." 
                     name="entry" 
                     value={this.props.entry}
                     onChange={this.props.handleEntryForm}/>
                     <br />
                     <h1>Could you summarise todays feeling with a word?</h1>
+                    <br />
                     {this.props.moods.map((mood, i) => 
                     <div key={i}> 
                         <input type="radio" name="mood" value={mood.id} onClick={this.props.handleSelectedMood} /> 
                         <label className="font" htmlFor="mood">{mood.name}</label>
                     </div>
                     )}
-                    <br />
                     <button className="ui teal basic button">Save</button>
-                </form>        
+                </form>   
                 <form onSubmit={(event) => this.props.handleUpdateSubmit(event)}>
                 <button className="ui teal basic button">Update</button> 
-                </form> 
-                <PromptContainer prompts={this.props.prompts}/> 
+                </form>   
+                </div> 
+                <div className="ui right aligned segment">
+                 <PromptContainer prompts={this.props.prompts} className="ui segment"/>
+                </div>  
             </div>
         )
     }

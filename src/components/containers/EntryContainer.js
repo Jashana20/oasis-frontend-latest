@@ -12,14 +12,15 @@ console.log(filteredMoodEntries)
             <div className="center">
                 <h1><i class="edit outline icon"></i>All Your Entries:</h1>
                 <h6>Filter by mood:</h6>
-                <select onChange={this.props.handleSelectedMood} className="ui compact menu">
+                <select onChange={this.props.handleSelectedMood} className="ui loading selection dropdown">
+                    <option value="All">All</option>
                     {this.props.moods.map((mood, i) => 
                     <option className="ui simple dropdown item" key={i} name="mood" value={mood.id}>{mood.name}</option>)}
                 </select>
                 <br />
                 <br />
                 <div className="row">
-                {this.props.selectedMood === "" ? 
+                {this.props.selectedMood === "All" ?
                 this.props.entries.map(entry => 
                 <EntryCard 
                 entry={entry} 
@@ -28,8 +29,7 @@ console.log(filteredMoodEntries)
                 selectEntryToDelete={this.props.selectEntryToDelete} 
                 deleteEntry={this.props.deleteEntry}
                 moods={this.props.moods}
-                 />) 
-                :
+                 />) :
                  filteredMoodEntries.map(entry => 
                     <EntryCard 
                     entry={entry} 
@@ -39,6 +39,7 @@ console.log(filteredMoodEntries)
                     deleteEntry={this.props.deleteEntry}
                     moods={this.props.moods}
                      />)
+
                  }
                 </div> 
             </div>

@@ -16,7 +16,7 @@ export default class AuthContainer extends Component {
     render() {
         return <div className="center">
             <h1><i class="leaf icon"></i>OASIS</h1>
-            <h3>a moment for your moments</h3>
+            <h3>A moment for your moments</h3>
             <p>Commit to the small task of frequent journalling to track and balance your mood</p>
             <div className="ui buttons">
             <button onClick={this.toggleView} className="ui teal basic button">Sign Up</button>

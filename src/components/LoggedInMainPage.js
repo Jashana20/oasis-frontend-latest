@@ -15,9 +15,11 @@ class LoggedInMainPage extends React.Component{
         showEntryForm: false,
         showAllEntries: false,
         showMoodCharts: false,
+        showCorrectPage: false,
+        pageValue: "",
         entry: "",
         affirmation: "",
-        selectedMoodId: "",
+        selectedMoodId: null,
         selectedMoodObj: {},
         selectedEntry: {},
         userEntries: [],
@@ -51,12 +53,20 @@ class LoggedInMainPage extends React.Component{
     }  
 
     handleShowEntryForm = () => {
-        this.setState({showEntryForm: !this.state.showEntryForm})
+        this.setState({
+            showEntryForm: !this.state.showEntryForm,
+            showMoodCharts: false,
+            showAllEntries: false
+        })
     }
 
     handleShowAllEntries = () => {
-        this.setState({showAllEntries: !this.state.showAllEntries})
-        this.setState({userEntries: this.props.user.entries})
+        this.setState({
+            showAllEntries: true,
+            userEntries: this.props.user.entries,
+            selectedMoodId: "All",
+            showMoodCharts: false
+        })
     }
 
     handleEntryForm = (e) => {
@@ -71,7 +81,10 @@ class LoggedInMainPage extends React.Component{
     }
 
     handleShowMoodCharts = () => {
-        this.setState({showMoodCharts: !this.state.showMoodCharts})
+        this.setState({
+            showMoodCharts: true,
+            showAllEntries: false
+        })
     }
 
     populateEntryForm = (selectedEntry) => {
@@ -98,7 +111,7 @@ class LoggedInMainPage extends React.Component{
           body: JSON.stringify(entryUpdate)
         })
         .then(res => res.json())
-        // .then(this.setState({userEntries: this.props.user.entries}))
+        .then(this.setState({userEntries: this.props.user.entries}))
       }
 
       selectEntryToDelete = (entryToDelete) => {
@@ -131,7 +144,12 @@ class LoggedInMainPage extends React.Component{
                     handleShowMoodCharts={this.handleShowMoodCharts} />
                     {this.props.user && <h1>{this.props.user.username}, lets get journalling!</h1>}
                 <div className="center">
-                <h3>{this.state.affirmation}</h3> 
+                <h3>"{this.state.affirmation}"</h3> 
+                <button className="ui teal basic button" onClick={this.handleShowEntryForm}>
+                    {this.state.showEntryForm ? "Maybe later" : "Start writing"}
+                </button> 
+                <br />
+                <br />
                 {this.state.showAllEntries && (
                     <div>
                         <EntryContainer 
@@ -148,9 +166,6 @@ class LoggedInMainPage extends React.Component{
                     )}
                      {this.state.showMoodCharts && (<MoodChart user={this.props.user} moods={this.props.moods} />) }
                      <br />
-                     <button className="ui teal basic button" onClick={this.handleShowEntryForm}>
-                    {this.state.showEntryForm ? "Maybe later" : "Start writing"}
-                    </button> 
                 {this.state.showEntryForm && (
                     <div>
                     <EntryForm 

@@ -55,7 +55,7 @@ class EntryForm extends React.Component{
                     )}
                     <button className="ui teal basic button">Save</button>
                 </form>   
-                <form onSubmit={(event) => this.props.handleUpdateSubmit(event)}>
+                <form onSubmit={this.props.handleUpdateSubmit}>
                 <button className="ui teal basic button">Update</button> 
                 </form>   
                 </div> 

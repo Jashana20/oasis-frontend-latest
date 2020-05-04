@@ -22,7 +22,7 @@ class EntryCard extends React.Component{
                      {this.entryMood()}</h4>
                 <br />
                 <div className="ui two buttons">
-                <button className="ui teal basic button" onClick={() => this.props.populateEntryForm(this.props.entry)}>
+                <button className="ui small teal basic button" onClick={() => this.props.populateEntryForm(this.props.entry)}>
                 <i class="pencil alternate icon"></i>Edit</button>
                 <br />
                 <form onSubmit={this.props.deleteEntry}> 

@@ -2,18 +2,6 @@ import React from 'react'
 import PromptCard from '../presentational/PromptCard'
 
 class PromptContainer extends React.Component{
-
-    state = {
-     lifeSatisfaction: "",
-     worthwhile: "",
-     happiness: "",
-     anxiety: ""
-    }
-
-    handlePromptInput = (e) => {
-        this.setState({[e.target.name]:e.target.value})
-    }
-
     render(){
         return(
             <div>
@@ -23,23 +11,23 @@ class PromptContainer extends React.Component{
                     <form>
                     {this.props.prompts.map(prompt => <PromptCard key={prompt.id} prompt={prompt} />)}
                     <textarea rows="4" cols="50" type="text" name="lifeSatisfaction" 
-                    value={this.state.lifeSatisfaction}
-                    onChange={this.handlePromptInput}
+                    value={this.props.lifeSatisfaction}
+                    onChange={this.props.handlePromptInput}
                     placeholder={this.props.prompts[0].question} />
                     <br />
                     <textarea rows="4" cols="50" type="text" name="worthwhile"
-                    value={this.state.worthwhile} 
-                    onChange={this.handlePromptInput} 
+                    value={this.props.worthwhile} 
+                    onChange={this.props.handlePromptInput} 
                     placeholder={this.props.prompts[1].question}/>
                     <br />
                     <textarea rows="4" cols="50" type="text" name="happiness" 
-                    value={this.state.happiness} 
-                    onChange={this.handlePromptInput} 
+                    value={this.props.happiness} 
+                    onChange={this.props.handlePromptInput} 
                     placeholder={this.props.prompts[2].question}/>
                     <br />
                     <textarea rows="4" cols="50" type="text" name="anxiety" 
-                    value={this.state.anxiety} 
-                    onChange={this.handlePromptInput} 
+                    value={this.props.anxiety} 
+                    onChange={this.props.handlePromptInput} 
                     placeholder={this.props.prompts[3].question}/>
                     </form>
             </div>

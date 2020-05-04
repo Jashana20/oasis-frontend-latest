@@ -8,17 +8,37 @@ import '../App.css';
 class EntryForm extends React.Component{
 
     state = {
-        showPrompts: false
+        lifeSatisfaction: "",
+        worthwhile: "",
+        happiness: "",
+        anxiety: ""
     }
 
-    handleShowPrompts = () => {
-        this.setState({showPrompts: !this.state.showPrompts})
+    handlePromptInput = (e) => {
+        this.setState({[e.target.name]:e.target.value})
     }
 
     handleSubmitEntry = (e) => {
         e.preventDefault()
-             const entry = {
-            entry: {journal_entry: this.props.entry, user_id: this.props.user.id, mood_id: this.props.selectedMood}
+        //      const entry = {
+        //     entry: {journal_entry: this.props.entry, user_id: this.props.user.id, mood_id: this.props.selectedMood}
+        // }
+        //     const lifeSatisfactionAnswer = {
+        //         answer: {question_id: 1, question_answer: this.state.lifeSatisfaction}
+        // }
+        //     const worthwhileAnswer = {
+        //         answer: {question_id: 2, question_answer: this.state.worthwhile}
+        // }
+        //     const happinessAnswer = {
+        //         answer: {question_id: 3, question_answer: this.state.happiness}
+        // }
+        //     const anxietyAnswer = {
+        //         answer: {question_id: 4, question_answer: this.state.anxiety}
+        //  }
+        const questions = this.state.happiness? [{question_id: 1, question_answer: this.state.lifeSatisfaction}, {question_id: 2, question_answer: this.state.worthwhile}, {question_id: 3, question_answer: this.state.happiness}, {question_id: 4, question_answer: this.state.anxiety}] : []
+        const body = {
+            entry: {journal_entry: this.props.entry, user_id: this.props.user.id, mood_id: this.props.selectedMood},
+            questions: questions
         }
         fetch("http://localhost:3000/entries", {
             method: "POST",
@@ -27,10 +47,10 @@ class EntryForm extends React.Component{
               "Content-Type": "application/json",
               "Accept": "application/json"
             },
-            body: JSON.stringify(entry)
+            body: JSON.stringify(body)
         })
-        .then(r => r.json())
-        .then(entry => this.props.addJournalEntry(entry))
+        // .then(r => r.json())
+        // .then(entry => this.props.addJournalEntry(entry))
         // .then(data => console.log(data))
     }
 
@@ -60,8 +80,16 @@ class EntryForm extends React.Component{
                 </form>   
                 </div> 
                 <div className="ui right aligned segment">
-                 <PromptContainer prompts={this.props.prompts} className="ui segment"/>
-                </div>  
+                 <PromptContainer 
+                 lifeSatisfaction={this.state.lifeSatisfaction}
+                 worthwhile={this.state.worthwhile}
+                 happiness={this.state.happiness}
+                 anxiety={this.state.anxiety}
+                 prompts={this.props.prompts} 
+                 handlePromptInput={this.handlePromptInput}
+                 className="ui segment"/>
+                 <button className="ui teal basic button">Finished</button>
+                </div> 
             </div>
         )
     }

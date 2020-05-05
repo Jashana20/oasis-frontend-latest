@@ -15,6 +15,7 @@ class NavBar extends React.Component{
                     <li><a href="#mood" value="mood" onClick={this.props.handleShowMoodCharts}>
                     <i class="chart area icon"></i>mood</a></li>
                     <li className="logo"><a href="#about"><i class="leaf icon"></i>OASIS</a></li>
+
                 </ul>
             </div>
         )

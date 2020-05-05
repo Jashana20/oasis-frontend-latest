@@ -143,7 +143,14 @@ class LoggedInMainPage extends React.Component{
                     handleShowAllEntries={this.handleShowAllEntries}
                     handleShowMoodCharts={this.handleShowMoodCharts} />
                     {this.props.user && <h1 className="border">{this.props.user.username}, lets get journaling!</h1>}
+                    {/* <p className="border">Commit to the small task of frequent journalling to track and balance your mood.</p> */}
                 <div className="center">
+                {/* {this.state.showEntryForm ? 
+                null :
+                <div>
+                <h3>A moment for your moments</h3>
+                <p>Commit to the small task of frequent journalling to track and balance your mood</p>
+                </div> } */}
                 <h3>"{this.state.affirmation}"</h3> 
                 <button className="ui teal basic button" onClick={this.handleShowEntryForm}>
                     {this.state.showEntryForm ? "Maybe later" : "Start writing"}

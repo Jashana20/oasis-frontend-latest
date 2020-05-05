@@ -11,8 +11,11 @@ class EntryCard extends React.Component{
     } 
 
     render(){  
+
+        const Colour = { color: 'grey'}
+
         return(
-            <div className="column">
+            <div className="column" style={Colour}>
             <div className="card">
                 <p>{this.props.entry.journal_entry}</p>
                 <h4>
@@ -30,6 +33,7 @@ class EntryCard extends React.Component{
                 <i class="trash alternate icon"></i>Delete</button>
                 </form>
                 </div>
+                {/* <button className="ui small teal basic button">Email to self</button> */}
             </div>
             </div>
         )

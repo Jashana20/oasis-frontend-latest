@@ -28,6 +28,7 @@ export default class AuthContainer extends Component {
                 ? <LogIn submit={this.props.submit} />
                 : <SignUp />
             }
+            <image src="/image/Analytics.jpg" alt="main page image"/>
         </div>
     }
 }

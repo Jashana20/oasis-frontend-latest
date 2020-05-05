@@ -69,7 +69,7 @@ class App extends React.Component{
       userEntries={this.state.userEntries}
     /> :
     <AuthContainer submit={this.onLoggedInSubmit}/>
-    
+   
     return componentToDisplay
   }
 }

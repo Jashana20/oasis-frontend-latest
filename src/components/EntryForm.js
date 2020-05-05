@@ -11,7 +11,13 @@ class EntryForm extends React.Component{
         lifeSatisfaction: "",
         worthwhile: "",
         happiness: "",
-        anxiety: ""
+        anxiety: "",
+        showPrompts: false
+    }
+
+
+    handleShowPrompt = () => {
+        this.setState({showPrompts: !this.state.showPrompts})
     }
 
     handlePromptInput = (e) => {
@@ -20,21 +26,6 @@ class EntryForm extends React.Component{
 
     handleSubmitEntry = (e) => {
         e.preventDefault()
-        //      const entry = {
-        //     entry: {journal_entry: this.props.entry, user_id: this.props.user.id, mood_id: this.props.selectedMood}
-        // }
-        //     const lifeSatisfactionAnswer = {
-        //         answer: {question_id: 1, question_answer: this.state.lifeSatisfaction}
-        // }
-        //     const worthwhileAnswer = {
-        //         answer: {question_id: 2, question_answer: this.state.worthwhile}
-        // }
-        //     const happinessAnswer = {
-        //         answer: {question_id: 3, question_answer: this.state.happiness}
-        // }
-        //     const anxietyAnswer = {
-        //         answer: {question_id: 4, question_answer: this.state.anxiety}
-        //  }
         const questions = this.state.happiness? [{question_id: 1, question_answer: this.state.lifeSatisfaction}, {question_id: 2, question_answer: this.state.worthwhile}, {question_id: 3, question_answer: this.state.happiness}, {question_id: 4, question_answer: this.state.anxiety}] : []
         const body = {
             entry: {journal_entry: this.props.entry, user_id: this.props.user.id, mood_id: this.props.selectedMood},
@@ -49,37 +40,43 @@ class EntryForm extends React.Component{
             },
             body: JSON.stringify(body)
         })
-        // .then(r => r.json())
-        // .then(entry => this.props.addJournalEntry(entry))
+        .then(r => r.json())
+        .then(entry => this.props.addJournalEntry(entry))
         // .then(data => console.log(data))
     }
 
     render(){
         return(
-            <div className="ui horizontal segments">
-                <div className="ui left aligned segment">
-                <h1>Whats up in the air today?</h1>
-                <form onSubmit={this.handleSubmitEntry}>
-                    <textarea className="ui massive form" type="text" placeholder="Tell us..." 
+            <div>
+                <div className="ui piled segment">
+                <h2>Whats up in the air today?</h2>
+                <button className="ui teal basic button" onClick={this.handleShowPrompt}>Show Prompts</button>
+                <form onSubmit={this.handleSubmitEntry} className="ui form">
+                    <br />
+                    <textarea className="field" rows="15" type="text" placeholder="Tell us..." 
                     name="entry" 
                     value={this.props.entry}
                     onChange={this.props.handleEntryForm}/>
                     <br />
-                    <h1>Could you summarise todays feeling with a word?</h1>
+                    <h2>Could you summarise todays feeling with a word?</h2>
                     <br />
                     {this.props.moods.map((mood, i) => 
-                    <div key={i}> 
-                        <input type="radio" name="mood" value={mood.id} onClick={this.props.handleSelectedMood} /> 
+                    <div key={i}>
+                        <input className="ui radio checkbox" tabindex="0" type="radio" name="mood" value={mood.id} onClick={this.props.handleSelectedMood} />
                         <label className="font" htmlFor="mood">{mood.name}</label>
+                        <br />
                     </div>
                     )}
+                    <br />
+                    <br />
                     <button className="ui teal basic button">Save</button>
                 </form>   
                 <form onSubmit={this.props.handleUpdateSubmit}>
                 <button className="ui teal basic button">Update</button> 
                 </form>   
-                </div> 
-                <div className="ui right aligned segment">
+                {this.state.showPrompts && 
+                <div>
+                <br />
                  <PromptContainer 
                  lifeSatisfaction={this.state.lifeSatisfaction}
                  worthwhile={this.state.worthwhile}
@@ -87,8 +84,9 @@ class EntryForm extends React.Component{
                  anxiety={this.state.anxiety}
                  prompts={this.props.prompts} 
                  handlePromptInput={this.handlePromptInput}
+                 user={this.props.user}
                  className="ui segment"/>
-                 <button className="ui teal basic button">Finished</button>
+                </div> }
                 </div> 
             </div>
         )

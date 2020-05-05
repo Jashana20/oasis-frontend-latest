@@ -128,30 +128,14 @@ class LoggedInMainPage extends React.Component{
   
     render(){
        return(
-            // <Router>
-            //     <Switch>
-            //         <Route />
-            //         <Route />
-            //         <Route />
-            //         <Route />
-            //         <Route />
-            //     </Switch>
-            // </Router>
             <div>
                  <NavBar 
                     signOut={this.props.signOut}
                     handleShowAllEntries={this.handleShowAllEntries}
                     handleShowMoodCharts={this.handleShowMoodCharts} />
                     {this.props.user && <h1 className="border">{this.props.user.username}, lets get journaling!</h1>}
-                    {/* <p className="border">Commit to the small task of frequent journalling to track and balance your mood.</p> */}
                 <div className="center">
-                {/* {this.state.showEntryForm ? 
-                null :
-                <div>
-                <h3>A moment for your moments</h3>
-                <p>Commit to the small task of frequent journalling to track and balance your mood</p>
-                </div> } */}
-                <h3>"{this.state.affirmation}"</h3> 
+                <h2>"{this.state.affirmation}"</h2> 
                 <button className="ui teal basic button" onClick={this.handleShowEntryForm}>
                     {this.state.showEntryForm ? "Maybe later" : "Start writing"}
                 </button> 

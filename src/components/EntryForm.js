@@ -47,8 +47,8 @@ class EntryForm extends React.Component{
 
     render(){
         return(
-            <div>
-                <div className="ui piled segment">
+            <div className="margin">
+                <div className="ui raised segment">
                 <h2>Whats up in the air today?</h2>
                 <button className="ui teal basic button" onClick={this.handleShowPrompt}>Show Prompts</button>
                 <form onSubmit={this.handleSubmitEntry} className="ui form">
@@ -62,7 +62,7 @@ class EntryForm extends React.Component{
                     <br />
                     {this.props.moods.map((mood, i) => 
                     <div key={i}>
-                        <input className="ui radio checkbox" tabindex="0" type="radio" name="mood" value={mood.id} onClick={this.props.handleSelectedMood} />
+                        <input className="ui radio checkbox" type="radio" name="mood" value={mood.id} onClick={this.props.handleSelectedMood} />
                         <label className="font" htmlFor="mood">{mood.name}</label>
                         <br />
                     </div>

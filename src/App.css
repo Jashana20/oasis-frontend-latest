@@ -84,3 +84,12 @@ body {
     margin-bottom: 20px;
   }
 }
+
+.border {
+  position: relative;
+  left: 20px;
+}
+
+.margin {
+  margin: 35px;
+}

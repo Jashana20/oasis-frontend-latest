@@ -142,7 +142,7 @@ class LoggedInMainPage extends React.Component{
                     signOut={this.props.signOut}
                     handleShowAllEntries={this.handleShowAllEntries}
                     handleShowMoodCharts={this.handleShowMoodCharts} />
-                    {this.props.user && <h1>{this.props.user.username}, lets get journaling!</h1>}
+                    {this.props.user && <h1 className="border">{this.props.user.username}, lets get journaling!</h1>}
                 <div className="center">
                 <h3>"{this.state.affirmation}"</h3> 
                 <button className="ui teal basic button" onClick={this.handleShowEntryForm}>

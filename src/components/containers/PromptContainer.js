@@ -18,7 +18,8 @@ class PromptContainer extends React.Component{
     }
 
     filterAnswers = () => {
- 
+        // const filter = this.state.previousAnswers.map(answer => answer.entry.id)
+        // console.log(filter)
     }
 
     render(){

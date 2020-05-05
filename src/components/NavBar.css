@@ -87,3 +87,24 @@ body {
   background-color: #dbf1f0;
   margin-bottom: 20px;
 }
+
+.margin {
+  margin: 20px;
+}
+
+.ui.raised.segment {
+  background-color: #dbf1f0;
+}
+.ui.basic.button {
+  width: 13%
+}
+
+.form.padding {
+  padding: 5px;
+}
+
+.button.up {
+  position: relative;
+  bottom: 25px;
+  margin-left: 10px
+}

@@ -24,12 +24,12 @@ class EntryCard extends React.Component{
                 <i class="smile outline icon"></i>
                      {this.entryMood()}</h4>
                 <br />
-                <div className="ui two buttons">
-                <button className="ui small teal basic button" onClick={() => this.props.populateEntryForm(this.props.entry)}>
+                <button className="ui left floated button" onClick={() => this.props.populateEntryForm(this.props.entry)}>
                 <i class="pencil alternate icon"></i>Edit</button>
                 <br />
-                <form onSubmit={this.props.deleteEntry}> 
-                <button className="ui small teal basic button" onClick={() => this.props.selectEntryToDelete(this.props.entry)}>
+                <div className="button up">
+                <form onSubmit={this.props.deleteEntry} className="form padding"> 
+                <button className="ui right floated button" onClick={() => this.props.selectEntryToDelete(this.props.entry)}>
                 <i class="trash alternate icon"></i>Delete</button>
                 </form>
                 </div>

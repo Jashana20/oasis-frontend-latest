@@ -138,14 +138,8 @@ class LoggedInMainPage extends React.Component{
          fetch(`http://localhost:3000/entries/${this.state.selectedEntry.id}`, {
             method: 'DELETE',
       })
-    //   .then(this.handleDelete())
     }
 
-    // handleDelete = () => {
-    //     this.props.getInitialData()
-    //     this.setState({ userEntries: this.props.user.entries })
-    // }
-  
     render(){
        return(
             <div>

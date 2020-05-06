@@ -133,7 +133,7 @@ body {
   grid-auto-rows: auto; */
    
   grid-gap: 1rem;
-  display: table;   /* Allow the centering to work */
+  /* display: table;   Allow the centering to work */
   /* margin: 0 auto; */
   margin: 1rem 2rem;
    
@@ -154,6 +154,8 @@ body {
     /* margin-bottom: 20px; */
     /* min-width: 696px; */
     list-style: none;
-    padding-top: 20px;
+    padding-top: 35px;
+    height: 250px;
+    width: 100%;
     /* display: inline; */
-  }    
+  }       

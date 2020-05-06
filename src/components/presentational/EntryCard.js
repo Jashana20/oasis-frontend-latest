@@ -16,7 +16,7 @@ class EntryCard extends React.Component{
 
         return(
             <div className="cards" style={Colour}>
-            <div className="card">
+            <div className="card" width="90%" height="200px"> 
                 <p>{this.props.entry.journal_entry}</p>
                 <h4>
                 <i class="frown outline icon"></i>

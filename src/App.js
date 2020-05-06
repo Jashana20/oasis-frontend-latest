@@ -25,19 +25,6 @@ class App extends React.Component{
     }
   }
 
-//   componentDidMount() {
-//     document.body.style.backgroundColor = "green"
-// }
-
-
-  // validateSignIn = () => {
-
-  // }
- 
-  // showAccountHandling = () => {
-  //   this.setState({accountHandling: !this.state.accountHandling})
-  // }
-
   signIn = (user, mood, token, user_id) => {
     this.setState({ user, moods: mood, userId: user_id});
     localStorage.token = token;
@@ -80,39 +67,6 @@ class App extends React.Component{
 }
 
 export default App
-
-
-//   render(){
-//     return(
-//       <div>
-//         {/* {Object.entries(this.state.user).length === 0 ? <h1>Please log in!</h1> : <h1>{this.state.user.username}, Lets get Journalling!</h1> } */}
-//         <Route
-//           exact
-//           path="/login"
-//           component={(props) => (
-//             <LogIn {...props} submit={this.onLoggedInSubmit} />
-//           )}
-//         />
-//         <Route 
-//           exact 
-//           path="/MainPage"
-//           render={(props) => <MainPage />}
-//         />
-//         <Route 
-//           exact
-//           path="/loggedInMainPage"
-//           render={(props) => 
-//             <LoggedInMainPage {...props} 
-//               mood={this.state.mood}
-//               user={this.state.user} 
-//               signOut={this.signOut} 
-//             />
-//           }
-//         />
-//       </div>
-//     )
-//   }
-// }
 
 
 

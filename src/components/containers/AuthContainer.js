@@ -29,13 +29,12 @@ export default class AuthContainer extends Component {
             <button onClick={this.toggleView} className="ui teal basic button">Sign Up</button>
             <button onClick={this.toggleView} className="ui teal basic button">Log In</button>
             </div>
-            <br />
+            {/* <br /> */}
             {
                 this.state.loginForm
                 ? <LogIn submit={this.props.submit} />
                 : <SignUp />
             }
-            {/* <image src="/image/Analytics.jpg" alt="main page image"/> */}
         </div>
     }
 }

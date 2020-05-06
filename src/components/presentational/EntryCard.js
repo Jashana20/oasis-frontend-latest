@@ -33,7 +33,6 @@ class EntryCard extends React.Component{
                 <i class="trash alternate icon"></i>Delete</button>
                 </form>
                 </div>
-                {/* <button className="ui small teal basic button">Email to self</button> */}
             </div>
             </div>
         )

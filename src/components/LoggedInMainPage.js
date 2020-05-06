@@ -16,28 +16,29 @@ class LoggedInMainPage extends React.Component{
         showAllEntries: false,
         showMoodCharts: false,
         showCorrectPage: false,
-        // pageValue: "",
         entry: "",
         affirmation: "",
         selectedMoodId: null,
         selectedMoodObj: {},
         selectedEntry: {},
         userEntries: [],
-        prompts: []
+        prompts: [],
+        deleteConfirm: false
         // selectedEntryId: 0,
     }
 
 
     componentDidMount(){
-        this.fetchdata()
+        this.fetchData()
         this.randomAffirmation()
   }
 
-   fetchdata = () => {
+   fetchData = () => {
     fetch(BASE_URL + '/questions')
     .then(res => res.json())
     .then(q => this.setState({prompts: q}))
     // .then(this.randomAffirmation)
+    .then(this.setState({userEntries: this.props.user.entries}))
    }
 
    randomAffirmation = () => {
@@ -46,9 +47,9 @@ class LoggedInMainPage extends React.Component{
     this.setState({affirmation: random})
    } 
    
-    // selectedEntry = () => {
-    //     return this.state.userEntries.find( e => e.id == this.state.selectedEntryId )
-    // }
+   handleDeleteConfirm = () => {
+       this.setState({deleteConfirm: !this.state.deleteConfirm})
+   }
 
     addJournalEntry = (entry) => { 
         this.props.getInitialData()
@@ -131,13 +132,20 @@ class LoggedInMainPage extends React.Component{
 
       selectEntryToDelete = (entryToDelete) => {
           this.setState({selectedEntry: entryToDelete})
+          this.handleDeleteConfirm()
       }
 
       deleteEntry = (e) => {
-          e.preventDefault()
+        //   e.preventDefault()
          fetch(`http://localhost:3000/entries/${this.state.selectedEntry.id}`, {
             method: 'DELETE',
       })
+      .then(this.handleDelete())
+    }
+
+    handleDelete = () => {
+        this.props.getInitialData()
+        this.setState({ userEntries: this.props.user.entries })
     }
 
     render(){

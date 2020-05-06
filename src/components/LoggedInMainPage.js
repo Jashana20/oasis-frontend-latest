@@ -135,7 +135,7 @@ class LoggedInMainPage extends React.Component{
           this.handleDeleteConfirm()
       }
 
-      deleteEntry = (e) => {
+      deleteEntry = () => {
         //   e.preventDefault()
          fetch(`http://localhost:3000/entries/${this.state.selectedEntry.id}`, {
             method: 'DELETE',

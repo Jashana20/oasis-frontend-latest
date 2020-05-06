@@ -19,19 +19,23 @@ class PromptContainer extends React.Component{
         .then(data => this.setState({previousAnswers: data}))
     }
 
-    handleShowPreviousAnswerOne = () => {
+    handleShowPreviousAnswerOne = (e) => {
+        e.preventDefault()
         this.setState({showPreviousAnswerOne: !this.state.showPreviousAnswerOne})
     }
 
-    handleShowPreviousAnswerTwo = () => {
+    handleShowPreviousAnswerTwo = (e) => {
+        e.preventDefault()
         this.setState({showPreviousAnswerTwo: !this.state.showPreviousAnswerTwo})
     }
 
-    handleShowPreviousAnswerThree = () => {
+    handleShowPreviousAnswerThree = (e) => {
+        e.preventDefault()
         this.setState({showPreviousAnswerThree: !this.state.showPreviousAnswerThree})
     }
 
-    handleShowPreviousAnswerFour = () => {
+    handleShowPreviousAnswerFour = (e) => {
+        e.preventDefault()
         this.setState({showPreviousAnswerFour: !this.state.showPreviousAnswerFour})
     }
 

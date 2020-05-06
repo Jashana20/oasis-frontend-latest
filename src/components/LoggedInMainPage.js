@@ -52,9 +52,9 @@ class LoggedInMainPage extends React.Component{
    }
 
     addJournalEntry = (entry) => { 
-        this.props.getInitialData()
+        // this.props.getInitialData()
         this.setState({ 
-            userEntries: [...this.state.userEntries, entry], 
+            userEntries: this.state.userEntries.push(entry),
             entry: "" 
         }) 
     }  

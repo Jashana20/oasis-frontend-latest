@@ -8,10 +8,11 @@ class EntryContainer extends React.Component{
     // const filteredEntries = this.props.entries.filter(entry => entry.user_id === this.props.user.id)
     const filteredMoodEntries = this.props.entries.filter(entry => entry.mood_id == this.props.selectedMood)
 console.log(filteredMoodEntries)
+        const colour = { color: 'rgba(89, 187, 187)'}
         return(
             <div className="center">
                 <h1><i class="edit outline icon"></i>All Your Entries:</h1>
-                <h6>Filter by mood:</h6>
+                <h5 style={colour}>Filter by mood:</h5>
                 <select onChange={this.props.handleSelectedMood} className="ui loading selection dropdown">
                     <option value="All">All</option>
                     {this.props.moods.map((mood, i) => 

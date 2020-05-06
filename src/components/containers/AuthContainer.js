@@ -14,9 +14,14 @@ export default class AuthContainer extends Component {
     }
     
     render() {
+        const logo = { 
+            fontSize : 60,
+            color: 'rgba(89, 187, 187)' 
+        }
+
         return <div className="center">
             <br />
-            <h1><i class="leaf icon"></i>OASIS</h1>
+            <h1 style={logo}><i class="leaf icon"></i>OASIS</h1>
             <h2>A moment for your moments</h2>
             <h3>Commit to the small task of frequent journaling to track and balance your mood.</h3>
             <br />

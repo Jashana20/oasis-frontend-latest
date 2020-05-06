@@ -15,6 +15,10 @@ class App extends React.Component{
   }
 
   componentDidMount(){
+    this.getInitialData()
+  }
+
+  getInitialData = () => {
     if(localStorage.token){
       API.get("validate", localStorage.token)
       .then(json => this.signIn(json.user, json.mood, json.token))
@@ -67,6 +71,7 @@ class App extends React.Component{
       moods={this.state.moods}
       signOut={this.signOut}
       userEntries={this.state.userEntries}
+      getInitialData={this.getInitialData}
     /> :
     <AuthContainer submit={this.onLoggedInSubmit}/>
    

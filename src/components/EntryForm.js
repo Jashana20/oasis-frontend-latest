@@ -43,6 +43,12 @@ class EntryForm extends React.Component{
         .then(r => r.json())
         .then(entry => this.props.addJournalEntry(entry))
         // .then(data => console.log(data))
+        .then(this.setState({
+            lifeSatisfaction: "",
+            worthwhile: "",
+            happiness: "",
+            anxiety: ""
+        }))
     }
 
     render(){

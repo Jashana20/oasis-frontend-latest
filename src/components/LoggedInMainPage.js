@@ -29,11 +29,16 @@ class LoggedInMainPage extends React.Component{
 
 
     componentDidMount(){
+        this.fetchdata()
+        this.randomAffirmation()
+  }
+
+   fetchdata = () => {
     fetch(BASE_URL + '/questions')
     .then(res => res.json())
     .then(q => this.setState({prompts: q}))
-    .then(this.randomAffirmation)
-  }
+    // .then(this.randomAffirmation)
+   }
 
    randomAffirmation = () => {
     const random = Affirmations[Math.floor(Math.random()*Affirmations.length)];
@@ -46,6 +51,7 @@ class LoggedInMainPage extends React.Component{
     // }
 
     addJournalEntry = (entry) => { 
+        this.props.getInitialData()
         this.setState({ 
             userEntries: [...this.state.userEntries, entry], 
             entry: "" 
@@ -65,7 +71,8 @@ class LoggedInMainPage extends React.Component{
             showAllEntries: true,
             userEntries: this.props.user.entries,
             selectedMoodId: "All",
-            showMoodCharts: false
+            showMoodCharts: false,
+            showEntryForm: false
         })
     }
 
@@ -110,8 +117,16 @@ class LoggedInMainPage extends React.Component{
           },
           body: JSON.stringify(entryUpdate)
         })
-        .then(res => res.json())
-        .then(this.setState({userEntries: this.props.user.entries}))
+        // .then(res => res.json())
+        .then(this.handleUpdate())
+      }
+
+      handleUpdate = () => {
+        this.props.getInitialData()
+        this.setState({
+            userEntries: this.props.user.entries,
+            entry: ""
+        })
       }
 
       selectEntryToDelete = (entryToDelete) => {
@@ -123,8 +138,13 @@ class LoggedInMainPage extends React.Component{
          fetch(`http://localhost:3000/entries/${this.state.selectedEntry.id}`, {
             method: 'DELETE',
       })
-    //   .then(res => res.json())
+    //   .then(this.handleDelete())
     }
+
+    // handleDelete = () => {
+    //     this.props.getInitialData()
+    //     this.setState({ userEntries: this.props.user.entries })
+    // }
   
     render(){
        return(

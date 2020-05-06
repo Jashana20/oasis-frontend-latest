@@ -15,7 +15,7 @@ class EntryCard extends React.Component{
         const Colour = { color: 'grey'}
 
         return(
-            <div className="column" style={Colour}>
+            <div className="cards" style={Colour}>
             <div className="card">
                 <p>{this.props.entry.journal_entry}</p>
                 <h4>
